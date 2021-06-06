@@ -1,0 +1,192 @@
+{% include 'header.htm.j2' %}
+<body>
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">OAMS</a>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+          {{ session['email'] }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  {% if session['user_type']== "admin" or session['user_type']== "user" or session['user_type']== "consultant" or session['user_type']== "manager" %}
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active">
+
+                {{ session['user_type']|upper }}
+
+              </a>
+            </li>
+            {% endif %}
+            <!-- ADMIN START -->            
+            {% if session['user_type']== "admin" %}
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('createmanager') }}">
+                <span data-feather="file"></span>
+                Manage Managers
+              </a> -->
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link"  href="{{ url_for('managepassword') }}">
+                    <span data-feather="file"></span>
+                    Update Password
+
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  href="{{ url_for('verify') }}">
+                    <span data-feather="file"></span>
+                    Verify Consultant
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  href="{{ url_for('verifyuser') }}">
+                    <span data-feather="file"></span>
+                    Verify User
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  href="{{ url_for('manage_profession') }}">
+                    <span data-feather="file"></span>
+                    Manage Profession
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  href="{{ url_for('manageQS') }}">
+                    <span data-feather="anchor"></span>
+                    Manage Qualification And Specialization
+                  </a>
+                </li>
+                <li class="nav-item dropdown" >
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Reports
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ url_for('Profession_Reports') }}">Profession Reports</a>
+                    <a class="dropdown-item" href="{{ url_for('Area_Profession_Reports') }}">Area Wise</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url_for('Date_Profession_Reports') }}">Date Wise</a>
+                    <a class="dropdown-item" href="{{ url_for('Experience_Profession_Reports') }}">Experience Wise</a>
+                    <a class="dropdown-item" href="{{ url_for('Feedback') }}">Feedback Wise</a>
+                    <a class="dropdown-item" href="{{ url_for('Area_Profession_Specialization_Reports') }}">APSR</a>
+                    <a class="dropdown-item" href="{{ url_for('Area_Profession_Qualification_Reports') }}">APQR</a>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            {% endif %}
+            <!-- ADMIN END -->              
+            <!-- MANAGER START -->
+            {% if session['user_type']== "manager" %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('verify') }}">
+                <span data-feather="file"></span>
+                Verification
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('managepassword') }}">
+                <span data-feather="file"></span>
+                Update password
+              </a>
+            </li>
+            {% endif %}
+            <!-- MANAGER END -->
+            <!-- CONSULTANT START -->              
+            {% if session['user_type']== "consultant" %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('managepassword') }}">
+                <span data-feather="file"></span>
+                Update password
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('schedule') }}">
+                <span data-feather="file"></span>
+                Schedule
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('details') }}">
+                <span data-feather="file"></span>
+                Personal Details
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('approveappointment') }}">
+                <span data-feather="file"></span>
+                Approve Appointment
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('viewappointment') }}">
+                <span data-feather="file"></span>
+                View Appointment
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('rcomplaint') }}">
+                <span data-feather="file"></span>
+                Register Complaint
+              </a>
+            </li>
+            {% endif %}
+            <!-- CONSULTANT END-->
+            <!-- USER START -->              
+            {% if session['user_type']== "user" %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('personal_details_user') }}">
+                <span data-feather="file"></span>
+                Personal Details
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('bookappointment') }}">
+                <span data-feather="file"></span>
+                Book Appointment
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('viewappointment_user') }}">
+                <span data-feather="file"></span>
+                View Appointment
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('Feedback_user') }}">
+                <span data-feather="file"></span>
+                Feedback
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('complaint_user') }}">
+                <span data-feather="file"></span>
+                Complaint
+              </a>
+            </li>
+          </ul>
+          {% endif %}
+          <!-- USER END --->
+
+        </div>
+      </nav>
+
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+        {% block content %}
+        {% endblock %}
+      </main>
+    </div>
+  </div>
+  {% include 'footer.htm.j2' %}
+
