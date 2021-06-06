@@ -20,8 +20,8 @@ app.secret_key = os.urandom(34)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'developer.websupp@gmail.com'
-app.config['MAIL_PASSWORD'] = 'PRLvikramsarabhairoom'
+app.config['MAIL_USERNAME'] = ''#username
+app.config['MAIL_PASSWORD'] = ''#password
 app.config['MAIL_DEFAULT_SENDER'] = 'developer.websupp@gmail.com'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
