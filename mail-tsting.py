@@ -9,9 +9,9 @@ mail=Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'developer.websupp@gmail.com'
-app.config['MAIL_PASSWORD'] = 'PRLvikramsarabhairoom'
-app.config['MAIL_DEFAULT_SENDER'] = 'developer.websupp@gmail.com'
+app.config['MAIL_USERNAME'] = ''
+app.config['MAIL_PASSWORD'] = ''
+app.config['MAIL_DEFAULT_SENDER'] = ''
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -21,7 +21,7 @@ def index():
 	s = "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	passlen = 8
 	password =  "".join(random.sample(s,passlen ))
-	msg = Message('Verification of Email', sender = 'developer.websupp@gmail.com', recipients = ['parikh.madhav1999@gmail.com'])
+	msg = Message('Verification of Email', sender = '', recipients = [''])
 	# msg.bodyy = "Hello Flask message sent from Flask-Mail"
 	msg.html = ''' <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
